@@ -67,3 +67,4 @@ class Model:
                 if not nuovo_nodo in visitati:
                     da_visitare.append(nuovo_nodo)
         return visitati
+
