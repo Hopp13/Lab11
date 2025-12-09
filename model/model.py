@@ -45,13 +45,25 @@ class Model:
         * Algoritmo iterativo
         per ottenere l'elenco di rifugi raggiungibili da `start` e deve restituire uno degli elenchi calcolati.
         :param start: nodo di partenza, da non considerare nell'elenco da restituire.
-
-        ESEMPIO
-        a = self.get_reachable_bfs_tree(start)
-        b = self.get_reachable_iterative(start)
-        b = self.get_reachable_recursive(start)
-
-        return a
         """
 
-        # TODO
+        a = self.get_reachable_bfs_tree(start)
+        b = self.get_reachable_iterative(start)
+        c = self.get_reachable_recursive(start)
+
+        return a
+
+    def get_reachable_bfs_tree(start):
+        T = NX.bfs_tree(self.G, start)
+        return list(T.nodes)
+
+    def get_reachable_iterative(start):
+        visitati = []
+        da_visitare = start
+        for nodo in da_visitare:
+            visitati.append(nodo)
+            nuovi = self.G.neighbors(nodo)
+            for nuovo_nodo in nuovi:
+                if not nuovo_nodo in visitati:
+                    da_visitare.append(nuovo_nodo)
+        return visitati
