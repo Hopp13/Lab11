@@ -36,7 +36,7 @@ class Controller:
         for n in self._model.get_nodes():
             # n è un oggetto rifugio; usiamo .nome come rappresentazione
             grado = self._model.get_num_neighbors(n)
-            self._view.lista_visualizzazione.controls.append(ft.Text(f"{n} -- {grado} vicini."))
+            self._view.lista_visualizzazione.controls.append(ft.Text(f"[{n.id}] {n.nome} ({n.localita}) -- {grado} vicini."))
 
         # abilita dropdown e bottone raggiungibili (se erano disabilitati)
         self._view.dd_rifugio.disabled = False
@@ -58,7 +58,7 @@ class Controller:
             ft.Text(f"Da '{self._current_rifugio.nome}' è possibile raggiungere a piedi {len(raggiungibili)} rifugi:"))
         for r in raggiungibili:
             # supponiamo che l'oggetto r abbia attributo nome
-            self._view.lista_visualizzazione.controls.append(ft.Text(f"{r}"))
+            self._view.lista_visualizzazione.controls.append(ft.Text(f"[{r.id}] {r.nome} ({r.localita})"))
 
         self._view.update()
 

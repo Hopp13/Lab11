@@ -45,7 +45,6 @@ class Model:
         counter = 0
         for neighbor in neighbors_list:
             counter += 1
-            neighbor.pop()
 
         return counter
 
@@ -69,17 +68,16 @@ class Model:
 
         a = self.get_reachable_bfs_tree(start)
         b = self.get_reachable_iterative(start)
-        c = self.get_reachable_recursive(start)
 
         return a
 
-    def get_reachable_bfs_tree(start):
-        T = NX.bfs_tree(self.G, start)
+    def get_reachable_bfs_tree(self, start):
+        T = nx.bfs_tree(self.G, start)
         return list(T.nodes)
 
-    def get_reachable_iterative(start):
+    def get_reachable_iterative(self, start):
         visitati = []
-        da_visitare = start
+        da_visitare = [start]
         for nodo in da_visitare:
             visitati.append(nodo)
             nuovi = self.G.neighbors(nodo)
@@ -87,4 +85,3 @@ class Model:
                 if not nuovo_nodo in visitati:
                     da_visitare.append(nuovo_nodo)
         return visitati
-

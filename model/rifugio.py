@@ -9,3 +9,6 @@ class Rifugio:
     altitudine : int
     capienza : int
     aperto : bool
+
+    def __hash__(self):
+        return self.id
