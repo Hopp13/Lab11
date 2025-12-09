@@ -17,11 +17,8 @@ class Model:
 
         connections_list = self.dao.read_connections(year)
         for connection in connections_list:
-            print(connection, type(connection))
             node1 = self.dao.read_node(connection.id_rifugio1)
             node2 = self.dao.read_node(connection.id_rifugio2)
-            print(type(node1), node1)
-            print(type(node2), node2)
             self.G.add_node(node1)
             self.G.add_node(node2)
             self.G.add_edge(node1, node2, year = year)

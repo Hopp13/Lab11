@@ -94,4 +94,3 @@ class Controller:
                 break
 
         self._current_rifugio = found
-        print("Rifugio selezionato:", self._current_rifugio)
